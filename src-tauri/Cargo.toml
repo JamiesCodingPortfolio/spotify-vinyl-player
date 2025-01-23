@@ -1,0 +1,31 @@
+[package]
+name = "spotify-vinyl-desktop-player"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "spotify_vinyl_desktop_player_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.11", features = ["json", "blocking"] } # For making HTTP requests
+sha2 = "0.10" # For SHA-256 hashing
+base64 = "0.21" # For Base64 encoding
+rand = "0.8" # For random number generation
+lazy_static = "1.4" # For lazy static initialization
+dotenv = "0.15.0"
+
